@@ -23,9 +23,4 @@
         End If
     End Sub
 
-    Private Sub Form2_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
-
-        'Dim k As Keys = e.KeyCode
-        'Invalidate()
-    End Sub
 End Class

@@ -4,7 +4,7 @@ Public Class EquilateralTriangle 'Равносторонний труеголь�
     Private points(2) As PointF 'Координаты вершин треугольника
     Private side As Double  'Длина стороны треугольникка
 
-    Public Property SideTriangle() As Double
+    Public Property SideTriangle() As Double 'Свойство для стороны
         Set(Value As Double)
             side = Value
         End Set
@@ -13,9 +13,9 @@ Public Class EquilateralTriangle 'Равносторонний труеголь�
         End Get
     End Property
 
-    Public Property UpPoint() As PointF
+    Public Property UpPoint() As PointF 'Свойство передачи верхней точки
         Set(Value As PointF)
-            points(0) = Value
+            points(0) = Value 'автоматический расчет точек
             points(1) = New PointF(UpPoint.X - side / 2, UpPoint.Y + (side * Math.Sqrt(3.0)) / 2)
             points(2) = New PointF(UpPoint.X + side / 2, UpPoint.Y + (side * Math.Sqrt(3.0)) / 2)
         End Set
@@ -23,22 +23,18 @@ Public Class EquilateralTriangle 'Равносторонний труеголь�
             Return points(0)
         End Get
     End Property
-    Public Sub New()
-        BackRoundColor = Brushes.Chocolate
-        'Dim R As Double = side / Math.Sqrt(3.0)
-    End Sub
-    Public Sub New(side As Double, uppoint As PointF, BackRoundColor As Brush)
-        If side <> 0 Then
+    Public Sub New(side As Double, uppoint As PointF, BackRoundColor As Brush) 'Конструктор передачи отдельных компонентов
+        If side > 0 Then 'Сторона не должна быть больше нуля
             Me.side = side
         Else Me.side = 50
         End If
-        Me.points(0) = New PointF(uppoint.X, uppoint.Y)
+        Me.points(0) = New PointF(uppoint.X, uppoint.Y) 'автоматический расчет точек
         points(1) = New PointF(uppoint.X - side / 2, uppoint.Y + (side * Math.Sqrt(3.0)) / 2)
         points(2) = New PointF(uppoint.X + side / 2, uppoint.Y + (side * Math.Sqrt(3.0)) / 2)
         Me.BackRoundColor = BackRoundColor
     End Sub
 
-    Public Sub New(Obj As EquilateralTriangle)
+    Public Sub New(Obj As EquilateralTriangle) 'Конструктор при передаче объекта класса
         Me.side = Obj.side
         Me.points(0) = Obj.points(0)
         Me.points(1) = Obj.points(1)
